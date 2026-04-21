@@ -1,4 +1,3 @@
-
 <div class="container">
     <app-header />
     <main class="track-content">
@@ -13,7 +12,7 @@
                     (click)="trackShipment()">Отследить</button>
             </div>
         </section>
-        <section class="track-card track-result" id="trackResult" [class.is-vissible]="trackResult()">
+        <section class="track-card track-result" id="trackResult" [class.is-visible]="trackResult()">
             <div class="track-result-header">
                 <div class="track-id" id="trackIdValue"></div>
                 <div class="track-routes">
@@ -56,18 +55,17 @@
             </div>
             <div class="track-info">
                 <div class="track-status-title">Статус данной посылки:</div>
-                <div class="track-status-list" id="trackStatusList">
-                    @for (status of trackResult()?.statuses; track status.type + status.date) {
-                    <div class="track-status" [class]="status.type">
-                        <img class="track-status-icon" [src]="'images/icons/' + status.type + '.svg'"
-                            [alt]="status.label" />
-                        <div class="track-status-text">
-                            <div class="track-status-text-state">{{ status.label }}</div>
-                            <div class="track-status-text-date">{{ status.date }}</div>
-                        </div>
+                <div class="track-status-list" id="trackStatusList"></div>
+                @for (status of trackResult()?.statuses; track status.type + status.date) {
+                <div class="track-status" [class]="status.type">
+                    <img class="track-status-icon" [src]="'images/icons/' + status.type + '.svg'"
+                        [alt]="status.label" />
+                    <div class="track-status-text">
+                        <div class="track-status-text-state">{{ status.label }}</div>
+                        <div class="track-status-text-date">{{ status.date }}</div>
                     </div>
-                    }
                 </div>
+                }
             </div>
         </section>
     </main>
